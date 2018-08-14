@@ -1,5 +1,5 @@
 {
-  "name": "racket",
+  "name": "@slicey/racket",
   "version": "0.0.0",
   "author": "slice <ryaneft@gmail.com>",
   "bin": {
