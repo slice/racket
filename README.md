@@ -21,13 +21,12 @@ required.
 ## features
 
 - automatic page reloading
-- minimal transpilation
-  - es2015 and other language features that your browser already supports aren't
-    transpiled
-  - less work on your cpu
-  - stuff that is transpiled:
-    - import/export stuff (by webpack)
-    - jsx
+- automatic transpilation
+  - **es2015 and other language features that your browser already supports
+    aren't transpiled**
+  - but what is transpiled?
+    - import/export
+    - react jsx and fragments
 - no scaffolding required
 
 ## getting started
