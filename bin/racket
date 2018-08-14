@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const serve = require('webpack-serve')
+
+const entry = path.resolve(
+  process.cwd(),
+  process.argv.length < 3 ? 'index.js' : process.argv[2]
+)
+
+const config = require('../lib/config')(entry)
+
+serve({}, config).catch((err) => {
+  console.error('> Failed to start webpack-serve:', err)
+})

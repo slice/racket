@@ -1,0 +1,16 @@
+{
+  "name": "racket",
+  "version": "0.0.0",
+  "author": "slice <ryaneft@gmail.com>",
+  "bin": {
+    "racket": "bin/racket"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.16.5",
+    "webpack-serve": "^2.0.2"
+  }
+}
