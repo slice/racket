@@ -1,15 +1,32 @@
 #!/usr/bin/env node
 
+const meow = require('meow')
 const path = require('path')
 const serve = require('webpack-serve')
 
+const help = `
+  usage
+    $ racket [entrypoint = index.js]
+
+  options
+    --port, -p  port to serve on
+
+  description
+    a mini dev server for javascript in the browser
+`
+
+const cli = meow(help, {
+  flags: {
+    port: { type: 'string', alias: 'p' },
+  },
+})
+
 const entry = path.resolve(
   process.cwd(),
-  process.argv.length < 3 ? 'index.js' : process.argv[2]
+  cli.input.length < 0 ? cli.input[0] : 'index.js'
 )
 
 const config = require('../lib/config')(entry)
+config.port = parseInt(cli.flags.port, 10)
 
-serve({}, config).catch((err) => {
-  console.error('> Failed to start webpack-serve:', err)
-})
+serve({}, config)
