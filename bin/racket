@@ -3,6 +3,7 @@
 const meow = require('meow')
 const path = require('path')
 const serve = require('webpack-serve')
+const getPort = require('get-port')
 
 const help = `
   usage
@@ -17,7 +18,7 @@ const help = `
 
 const cli = meow(help, {
   flags: {
-    port: { type: 'string', alias: 'p' },
+    port: { type: 'string', alias: 'p', default: '9000' },
   },
 })
 
@@ -26,7 +27,19 @@ const entry = path.resolve(
   cli.input.length < 0 ? cli.input[0] : 'index.js'
 )
 
-const config = require('../lib/config')(entry)
-config.port = parseInt(cli.flags.port, 10)
+;(async () => {
+  // Generate a configuration based on our entrypoint.
+  const config = require('../lib/config')(entry)
 
-serve({}, config)
+  const wantedPort = parseInt(cli.flags.port, 10)
+
+  if (isNaN(wantedPort)) {
+    console.error('> Invalid port.')
+    return
+  }
+
+  const port = await getPort({ port: wantedPort })
+  config.port = port
+
+  serve({}, config)
+})()
