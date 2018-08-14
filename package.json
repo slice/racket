@@ -5,6 +5,8 @@
   "bin": {
     "racket": "bin/racket"
   },
+  "keywords": ["dev server", "mini"],
+  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
