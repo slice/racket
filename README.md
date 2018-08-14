@@ -8,15 +8,27 @@ $ npm i -g @slicey/racket
 
 ## description
 
-racket is a small wrapper around webpack and webpack-serve, letting you quickly
-test javascript in the browser without having to set things up.
+racket is a small tool that wraps around webpack and webpack-serve, letting you
+quickly test javascript in the browser without having to set things up.
 
-racket isn't designed to 'build' apps, though. no code compiling is done other
-than `import`/`export` resolving via webpack and jsx compiling, so make sure you
-have a modern browser while using racket.
+racket isn't designed to build production apps, though. no code compiling is
+done other than `import`/`export` resolving via webpack and jsx transformations,
+so make sure you have a modern browser while using racket.
 
 think of racket like a really really small create-react-app, with no scaffolding
 required.
+
+## features
+
+- automatic page reloading
+- minimal transpilation
+  - es2015 and other language features that your browser already supports aren't
+    transpiled
+  - less work on your cpu
+  - stuff that is transpiled:
+    - import/export stuff (by webpack)
+    - jsx
+- no scaffolding required
 
 ## getting started
 
@@ -30,19 +42,19 @@ const node = (
   <div style={{ padding: '1rem', background: 'mistyrose' }}>beep boop!</div>
 )
 
-// injected by racket automatically
+// an automatically available <div>
 const mountNode = document.getElementById('mount')
 
 ReactDOM.render(node, mountNode)
 ```
 
-install your deps:
+install your deps locally:
 
 ```sh
 $ npm i react react-dom
 ```
 
-and boot it up:
+and boot up the dev server:
 
 ```sh
 $ racket
