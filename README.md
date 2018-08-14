@@ -3,7 +3,7 @@
 play with javascript in your browser with no friction
 
 ```sh
-$ npm i -g @slicey/racket
+$ npm i -g slice/racket
 ```
 
 ## description
